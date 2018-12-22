@@ -20,4 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('manage-roles','RoleController@index')->name('roles.index');
+Route::get('roles','RoleController@index')->name('roles.index');
+
+
+//Route::get('roles/create','RoleController@create')->name('roles.create');
+//Route::post('roles/insert','RoleController@insert')->name('roles.insert');
+
+
+//Route::get('roles/{id}/edit','RoleController@edit')->name('roles.edit');
+//Route::put('roles/{id}/update','RoleController@update')->name('roles.update');
+
