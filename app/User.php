@@ -11,6 +11,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['phone'];
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -54,10 +63,17 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
+    //Reverse of Many to One
     public function city()
     {
         return $this->belongsTo(City::class);
     }
+
+    public function phone()
+    {
+        return $this->hasOne(Phone::class);
+    }
+
 
 
 }
