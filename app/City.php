@@ -16,12 +16,6 @@ class City extends Model
         'name'
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = ['users'];
 
     public function users()
     {
