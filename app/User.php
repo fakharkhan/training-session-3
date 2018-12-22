@@ -73,5 +73,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class)->withPivot(['comments'])->as('Comments');
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+
 
 }
