@@ -23,10 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('roles','RoleController@index')->name('roles.index');
 
 
-//Route::get('roles/create','RoleController@create')->name('roles.create');
-//Route::post('roles/insert','RoleController@insert')->name('roles.insert');
+Route::get('roles/create','RoleController@create')->name('roles.create');
+Route::post('roles/insert','RoleController@insert')->name('roles.insert');
 
 
-//Route::get('roles/{id}/edit','RoleController@edit')->name('roles.edit');
-//Route::put('roles/{id}/update','RoleController@update')->name('roles.update');
+Route::get('roles/{id}/edit','RoleController@edit')->name('roles.edit');
+Route::put('roles/{id}/update','RoleController@update')->name('roles.update');
+Route::delete('roles/{id}/delete','RoleController@delete')->name('roles.delete');
 
