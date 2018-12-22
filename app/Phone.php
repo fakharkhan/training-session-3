@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     protected $fillable = ['mobile'];
+
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
