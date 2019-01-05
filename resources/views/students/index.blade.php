@@ -16,7 +16,6 @@
 @section('content')
 
 
-
     @include('students.partials.table',['users'=>$users])
 
     @include('students.partials.table',['users'=>$students])
