@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('students.index') }}">{{ __('Students') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
