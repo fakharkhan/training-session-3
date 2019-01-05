@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentFormRequest;
 use App\Student;
 use App\User;
 use Illuminate\Http\Request;
@@ -51,19 +52,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentFormRequest $request)
     {
-        //except
-        //only
-        //merge
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:students'
-        ]);
-
-
-        Student::create($request->all());
+       Student::create($request->all());
 
        return redirect()->route('students.index');
     }
