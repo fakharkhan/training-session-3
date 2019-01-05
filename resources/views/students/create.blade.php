@@ -9,12 +9,14 @@
 
         @include('_error_alerts')
 
-        <form action="{{ route('students.store') }}" method="post">
+        <form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
             @csrf()
 
             @text('name'=>'name')
             @text('name'=>'email')
             @text('name'=>'phone')
+
+            <input type="file" name="photo" />
 
             <button type="submit">
                 Save

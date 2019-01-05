@@ -56,9 +56,16 @@ class StudentController extends Controller
     public function store(StudentFormRequest $request)
     {
 
-       $student = Student::create($request->all());
+        if ($request->hasFile('photo')) {
 
-       //Alert the student
+            $path = $request->file('photo')->store('students','public');
+
+            $request->merge(['photo_url'=>$path]);
+        }
+
+        $student = Student::create($request->all());
+
+        //Alert the student
         //without queue
         Mail::to($student->email)
             ->send(new StudentCreated($student));
