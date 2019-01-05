@@ -15,12 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('roles','RoleController@index')->name('roles.index');
+Route::get('roles','RoleController@index')->name('roles.index')->middleware('verified');
 
 
 Route::get('roles/create','RoleController@create')->name('roles.create');
@@ -32,4 +32,4 @@ Route::put('roles/{id}/update','RoleController@update')->name('roles.update');
 Route::delete('roles/{id}/delete','RoleController@delete')->name('roles.delete');
 
 
-Route::resource('students','StudentController');
+Route::resource('students','StudentController')->middleware('verified');
