@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentFormRequest;
+use App\Mail\StudentCreated;
 use App\Student;
-use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -55,7 +56,16 @@ class StudentController extends Controller
     public function store(StudentFormRequest $request)
     {
 
-       Student::create($request->all());
+       $student = Student::create($request->all());
+
+       //Alert the student
+        //without queue
+        Mail::to($student->email)
+            ->send(new StudentCreated($student));
+
+        //with queue
+        Mail::to($student->email)
+            ->queue(new StudentCreated($student));
 
        return redirect()->route('students.index');
     }
