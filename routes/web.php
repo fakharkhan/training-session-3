@@ -31,3 +31,5 @@ Route::get('roles/{id}/edit','RoleController@edit')->name('roles.edit');
 Route::put('roles/{id}/update','RoleController@update')->name('roles.update');
 Route::delete('roles/{id}/delete','RoleController@delete')->name('roles.delete');
 
+
+Route::resource('students','StudentController');
