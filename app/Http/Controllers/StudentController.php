@@ -57,7 +57,13 @@ class StudentController extends Controller
         //only
         //merge
 
-       Student::create($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:students'
+        ]);
+
+
+        Student::create($request->all());
 
        return redirect()->route('students.index');
     }

@@ -2,8 +2,13 @@
 
 @section('content')
 
+
+
     <div class="container">
         <h1> {{ $title }}</h1>
+
+        @include('_error_alerts')
+
         <form action="{{ route('students.store') }}" method="post">
             @csrf()
 
