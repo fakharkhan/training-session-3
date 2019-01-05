@@ -1,23 +1,10 @@
-@extends('layouts.master')
-
-@section('title','Students list')
-
-@section('css')
-    <style>
-
-    </style>
-@endsection
-
-
-@section('heading')
-    <h1>Students List</h1>
-@endsection
+@extends('layouts.app')
 
 @section('content')
+    <div class="container">
+        <h1> {{ $title }}</h1>
+        <a href="{{ route('students.create')}}">Create Student</a>
 
-
-    @include('students.partials.table',['users'=>$users])
-
-    @include('students.partials.table',['users'=>$students])
-
+        @include('students.partials.table',['users'=>$students])
+    </div>
 @endsection

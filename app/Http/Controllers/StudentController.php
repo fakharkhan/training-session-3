@@ -17,6 +17,8 @@ class StudentController extends Controller
     public function __construct()
     {
         //$this->middleware('CheckAge');
+
+        view()->share('title','My Students List');
     }
 
     /**
@@ -29,9 +31,7 @@ class StudentController extends Controller
 
         $students = Student::all();
 
-        $users = Student::all();
-
-        return view('students.index',compact('students','users'));
+        return view('students.index',compact('students'));
 
     }
 
@@ -42,7 +42,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -53,7 +53,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //except
+        //only
+        //merge
+
+       Student::create($request->all());
+
+       return redirect()->route('students.index');
     }
 
     /**
