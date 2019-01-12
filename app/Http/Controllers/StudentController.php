@@ -44,7 +44,12 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+
+        if(auth()->user()->can('create-student'))
+        {
+            return view('students.create');
+        }
+        return redirect()->route('students.index');
     }
 
     /**
@@ -55,6 +60,10 @@ class StudentController extends Controller
      */
     public function store(StudentFormRequest $request)
     {
+        if(!auth()->user()->can('create-student'))
+        {
+            return redirect()->route('students.index');
+        }
 
         if ($request->hasFile('photo')) {
 

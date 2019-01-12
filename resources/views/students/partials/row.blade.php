@@ -3,6 +3,8 @@
     <td>{{ $user->email }}</td>
     <td>{{ $user->phone }}</td>
     <td>
-        <img style="width: 50px;height: auto;" src="{{ url($user->photo_url) }}" alt="Student Photo">
+        @if($user->photo_url)
+            <img style="width: 50px;height: auto;" src="{{ url($user->photo_url) }}" alt="Student Photo">
+        @endif
     </td>
 </tr>
