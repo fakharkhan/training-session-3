@@ -20,7 +20,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('roles','RoleController@index')->name('roles.index')->middleware('verified');
+Route::get('roles','RoleController@index')->name('roles.index')->middleware('auth');
 
 
 Route::get('roles/create','RoleController@create')->name('roles.create');
@@ -33,3 +33,7 @@ Route::delete('roles/{id}/delete','RoleController@delete')->name('roles.delete')
 
 
 Route::resource('students','StudentController')->middleware('verified');
+
+Route::get('check-age/{age}',function ($age){
+   return $age;
+})->middleware('age');

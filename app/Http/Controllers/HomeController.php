@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //dd(app(UserRepository::class)->sum(5,3));
 
         return view('home');
     }
