@@ -73,6 +73,8 @@ class StudentController extends Controller
 
         $student = Student::create($request->all());
 
+        event('students.create',[auth()->user(),$student]);
+
         //Alert the student
         //without queue
         Mail::to($student->email)
@@ -81,6 +83,8 @@ class StudentController extends Controller
         //with queue
         Mail::to($student->email)
             ->queue(new StudentCreated($student));
+
+
 
        return redirect()->route('students.index');
     }
