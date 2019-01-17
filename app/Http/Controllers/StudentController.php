@@ -75,14 +75,15 @@ class StudentController extends Controller
 
         event('students.create',[auth()->user(),$student]);
 
+        auth()->user()->notify(new \App\Notifications\StudentCreated($student));
         //Alert the student
         //without queue
-        Mail::to($student->email)
-            ->send(new StudentCreated($student));
+//        Mail::to($student->email)
+//            ->send(new StudentCreated($student));
 
         //with queue
-        Mail::to($student->email)
-            ->queue(new StudentCreated($student));
+//        Mail::to($student->email)
+//            ->queue(new StudentCreated($student));
 
 
 
