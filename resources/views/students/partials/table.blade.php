@@ -4,8 +4,9 @@
         <td>Email</td>
         <td>Phone</td>
         <td>Photo</td>
+        <td>Action</td>
     </tr>
-    @foreach($users as $user)
+    @foreach($students as $student)
         @include('students.partials.row')
     @endforeach
 </table>

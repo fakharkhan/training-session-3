@@ -4,6 +4,6 @@
            id="fc-{{ $name }}"
            name="{{ $name }}"
            placeholder="{{ isset($placeholder) ? $placeholder : (isset($label) ? $label : ucfirst($name)) }}"
-           value="{{ old($name) }}"
+           value="{{ isset($value) ? $value : old($name) }}"
     >
 </div>

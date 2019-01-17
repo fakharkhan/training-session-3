@@ -22,7 +22,9 @@
                             <td>{{ $role->id }}</td>
                             <td>{{ $role->name }}</td>
                             <td>
+                                @can('update',$role)
                                 <a href="{{ route('roles.edit',$role->id) }}" role="button" class="btn btn-info">Edit</a>
+                                @endcan
                             </td>
                             <td>
                                 <form method="POST" action="{{ route('roles.delete',$role->id) }}" role="form">

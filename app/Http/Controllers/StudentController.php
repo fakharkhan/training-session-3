@@ -44,11 +44,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-
-        if(auth()->user()->can('create-student'))
-        {
+        if (auth()->user()->can('create', Student::class)) {
             return view('students.create');
         }
+
         return redirect()->route('students.index');
     }
 
@@ -105,7 +104,14 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+
+        if (auth()->user()->can('update', $student))
+        {
+            return view('students.update',compact('student'));
+        }
+
+        return redirect()->route('students.index');
     }
 
     /**
@@ -117,7 +123,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        if (auth()->user()->can('update', $student)) {
+            $student->update($request->all());
+        }
+        return redirect()->route('students.index');
     }
 
     /**
