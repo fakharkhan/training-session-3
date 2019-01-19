@@ -14,8 +14,10 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <students></students>
+
                 </div>
+
             </div>
         </div>
     </div>
